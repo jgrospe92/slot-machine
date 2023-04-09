@@ -1,0 +1,2 @@
+# slot-maching
+ Javascript Project
