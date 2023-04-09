@@ -4,18 +4,33 @@
 const prompt = require("prompt-sync")();
 
 /**
- * @desc global variables
- * @property
+ * @summary global variables
+ * @constant
+ * @type {numeric}
+ * @default
  */
 const ROWS = 3;
 const COLS = 3;
+
+/**
+ * @summary Declares how many times each symbol should appear
+ * @constant
+ * @type {object} 
+ * @default
+ */
 const SYMBOLS_COUNT = {
-    A : 2,
+    A : 3,
     B : 4,
     C : 6,
     D : 8,
 }
 
+/**
+ * @summary Declares the value of each symbols
+ * @constant
+ * @type {object} 
+ * @default
+ */
 const SYMBOLS_VALUES = {
     A : 5,
     B : 4,
@@ -26,7 +41,8 @@ const SYMBOLS_VALUES = {
 
 
 /**
- * 
+ * @summary Ask user for deposit amount
+ * @desc Ask user the amount then validates it
  * @returns 
  */
 const deposit = () => {
@@ -41,6 +57,11 @@ const deposit = () => {
     }
 }
 
+/**
+ * @summary Ask user how which line to bet on
+ * @desc ask the user for the line number then validates it 
+ * @returns {number} 
+ */
 const getNumberOfLines = () => {
     while (true) {
 
@@ -54,6 +75,13 @@ const getNumberOfLines = () => {
     }
 }
 
+/**
+ * @summary Ask the user how much amount to bet on the line(s)
+ * @desc Ask the amount then validates it
+ * @param {number} balance - The deposited amount
+ * @param {number} lines - Lines to bet on
+ * @returns {number} - The bet amount per line
+ */
 const getBet = (balance, lines) => {
     while (true) {
         const bet = parseFloat(prompt("Enter the total bet per line: "));
@@ -66,8 +94,12 @@ const getBet = (balance, lines) => {
     }
 }
 
+/**
+ * 
+ * @returns {object}
+ */
 const spin = () => {
-    const symbols = []; // all symbols according to their count
+    const symbols = [];
     for (const [symbol, count] of Object.entries(SYMBOLS_COUNT)){
 
         for (let i = 0; i < count; i++){
